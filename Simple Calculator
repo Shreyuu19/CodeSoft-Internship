@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+// create a class for calculator 
+class calculator{
+    public:
+    int x;
+    int y;
+    
+// Initializing zero to all the operation
+    int sum = 0;
+    int mul = 0;
+    int sub = 0;
+    int div = 0;
+    int result = 0;
+    
+   // created a function named operation
+    int operation();
+};
+
+ int calculator::operation(){
+     
+     // input from user 
+    cout<<"Which operation do you want to perform(+,-,*,/)"<<endl;
+    char ch;
+    cout<<"Enter the operator:"<<" ";
+    cin>>ch;
+    cout<<"Enter the value of x:"<<" ";
+    cin>>x;
+    cout<<"Enter the value of y:"<<" ";
+    cin>>y;
+
+    if(ch=='+'){
+        result = x+y;
+    }
+    else if(ch=='-'){
+        result= x-y ;
+    }
+    else if(ch=='*'){
+        result= x*y;
+    }
+    else if(ch=='/'){
+        result= x/y;
+    }
+    else{
+        cout<<"Default"<<endl;
+    }
+    
+    cout<<"The result is: "<<result<<" ";
+    return 0;
+}
+
+int main(){
+    calculator obj;// created a object 
+    obj.operation();
+}
