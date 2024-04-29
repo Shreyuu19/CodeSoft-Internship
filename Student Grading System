@@ -1,0 +1,47 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include <algorithm>
+#include <climits> // Include for INT_MAX and INT_MIN
+using namespace std;
+
+int main() {
+    map<string, int> studentGrades;
+    string name;
+    int grade;
+    char addAnother;
+
+    do {
+        cout << "Enter student name: ";
+        cin >> name;
+
+        cout << "Enter " << name << "'s grade: ";
+        cin >> grade;
+
+        studentGrades[name] = grade;
+
+        cout << "Do you want to add another student? (y/n): ";
+        cin >> addAnother;
+    } while (addAnother == 'y' || addAnother == 'Y');
+        
+    // Calculate average grade
+    double totalGrade = 0;
+    int numOfStudents = studentGrades.size();
+    int lowestGrade = INT_MAX; // Initialize to maximum possible value
+    int highestGrade = INT_MIN; // Initialize to minimum possible value
+
+    for (const auto& pair : studentGrades) {
+        totalGrade += pair.second;
+        lowestGrade = min(lowestGrade, pair.second);
+        highestGrade = max(highestGrade, pair.second);
+    }
+
+    double averageGrade = totalGrade / numOfStudents;
+
+    // Display results
+    cout << "Average grade: " << averageGrade << endl;
+    cout << "Highest grade: " << highestGrade << endl;
+    cout << "Lowest grade: " << lowestGrade << endl;
+
+    return 0;
+}
